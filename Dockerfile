@@ -21,8 +21,8 @@ RUN echo "xdebug.remote_enable=on\n" >> /usr/local/etc/php/conf.d/docker-php-ext
 EXPOSE 9000
 
 # clean
-RUN apt-get autoclean && \
-    apt-get autoremove
+RUN apt-get autoclean -y && \
+    apt-get autoremove -y 
 
 # Get latest Composer
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
