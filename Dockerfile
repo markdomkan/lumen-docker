@@ -28,12 +28,6 @@ RUN apt-get autoclean -y && \
 # Get latest Composer
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 
-# make a default rootless user
-RUN useradd -m docker --uid=1000 && echo "docker:docker" | \
-    chpasswd
-
-USER 1000:1000
-
 # set composer bin into path
 RUN echo "export PATH=$PATH:~/.composer/vendor/bin\n" >> ~/.bashrc
 
