@@ -28,6 +28,9 @@ RUN apt-get autoclean -y && \
 # Get latest Composer
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 
+RUN adduser docker
+USER docker
+
 # set composer bin into path
 RUN echo "export PATH=$PATH:~/.composer/vendor/bin\n" >> ~/.bashrc
 

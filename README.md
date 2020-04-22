@@ -1,11 +1,14 @@
+# Container with all necessary to use develop lumen
+
 This image contains a all necessary to use lumen (laravel api)
+
 - **php**: 7.4; with **xdebug** on port 9001
 
-
+By default, the user is docker (docker:1000:1000), a non root user.
 
 example of docker-compose.yml:
 
-```
+```yml
 version: "3.7"
 services:
   app:
@@ -20,7 +23,7 @@ services:
       - app_name-network
     depends_on:
       - "nginx"
- 
+
   db:
     image: mysql:8.0.19
     container_name: app_name-db
@@ -59,7 +62,8 @@ volumes:
 ```
 
 docker-compose/nginx/default.conf:
-```
+
+```conf
 server {
     listen 80;
     index index.php index.html;
